@@ -3,38 +3,42 @@ using System.ComponentModel.DataAnnotations;
 
 namespace MVC_EF_Start.Models
 {
-    public class Company
+    public class Regions
     {
-        public string Id { get; set; }
-        public string name { get; set; }
-        public string date { get; set; }
-        public bool isEnabled { get; set; }
-        public string type { get; set; }
-        public string iexId { get; set; }
-        public List<Quote> Quotes { get; set; }
+        public string region_name { get; set; }
+        public List<Counties> counties { get; set; }
     }
 
-    public class Quote
+    public class Counties
     {
-        public int Id { get; set; }
-        public string date { get; set; }
-        public float open { get; set; }
-        public float high { get; set; }
-        public float low { get; set; }
-        public float close { get; set; }
-        public int volume { get; set; }
-        public int unadjustedVolume { get; set; }
-        public float change { get; set; }
-        public float changePercent { get; set; }
-        public float vwap { get; set; }
-        public string label { get; set; }
-        public float changeOverTime { get; set; }
-        public string ClassDemo { get; set; }
-        public Company Company { get; set; }
+        public string county_name { get; set; }
+        public Regions regions { get; set; }
+        public Vehicles vehicles { get; set; }
     }
 
-    public class ChartRoot
+    public class Vehicles
     {
-        public Quote[] chart { get; set; }
+        public string vin { get; set; }
+        public string make_name { get; set; }
+        public string model_name { get; set; }
+        public int range { get; set; }
+        public Counties counties { get; set; }
+        public Makes makes { get; set; }
+        public Models models { get; set; }
+    }
+
+    public class Makes
+    {
+        public string make_name { get; set; }
+        public string model_name { get; set; }
+        public List<Vehicles> vehicles { get; set; }
+        public List<Models> models { get; set; }
+    }
+
+    public class Models
+    {
+        public string model_name { get; set; }
+        public Makes makes { get; set; }
+        public Vehicles vehicles { get; set; }
     }
 }
