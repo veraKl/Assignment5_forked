@@ -1,0 +1,143 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../css/StyleSheetFormatting.css">
+    <link rel="stylesheet" href="../css/StyleSheet_common.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.js"></script>
+
+    <style>
+        .main {
+            align-content: center;
+            text-align: center;
+        }
+
+        .information {
+            align-content: center;
+            margin-top: 55px;
+            text-align: center;
+        }
+    </style>
+
+
+</head>
+
+<body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="50">
+
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">Electric Vehicle</a>
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="EV_HomePage.html">Home</a></li>
+                    <li><a href="mainpage.html">Main Page</a></li>
+                    <li><a href="details.html">Details</a></li>
+                    <li><a href="aboutUs.html">About Us</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="information">
+        <h1>Electric Vehicles in Washington State</h1>
+
+        <p>Below is a graph of the population of electric vehicle makes in the state of Washington. 
+        Click on a regional bar to see more information about the electric cars popular in the area.</p>
+    </div>
+
+    <div class="main">
+        <p style="max-width:1000px; margin: auto;">
+            <canvas id="stackedbarchart" width="800" height="400"></canvas>
+        </p>
+
+        <script>
+            new Chart(document.getElementById("stackedbarchart"), {
+                type: 'horizontalBar',
+                data: {
+                    labels: ["Olympic", "Northwest", "Northeast", "South Puget Sound", "Pacific Cascade", "Southeast"],
+                    datasets: [
+                        {
+                            label: "Tesla",
+                            backgroundColor: "#3e95cd",
+                            data: [134, 242, 152, 605, 3970, 1684]
+                        },
+                        {
+                            label: "Nissan",
+                            backgroundColor: "#8e5ea2",
+                            data: [35, 31, 39, 146, 661, 618]
+                        },
+                        {
+                            label: "Chevrolet",
+                            backgroundColor: "#3cba9f",
+                            data: [22, 70, 90, 217, 504, 515]
+                        },
+                        {
+                            label: "Ford",
+                            backgroundColor: "#e8c3b9",
+                            data: [27, 42, 71, 113, 304, 316]
+                        },
+                    ]
+                },
+                options: {
+                    scales: {
+                        xAxes: [
+                            {
+                                stacked: true
+                            }
+                        ],
+                        yAxes: [
+                            {
+                                stacked: true
+                            }
+                        ]
+                    },
+                    legend: {
+                        display: true
+                    },
+                    onClick: function (event, elements) {
+                        if (elements.length > 0) {
+                            // Get the label of the clicked bar
+                            const index = elements[0]._index;
+
+                            // Define the URLs to link to for each label (customize as needed)
+                            const connection = {
+                                0: "details.html?region=Olympic",
+                                1: "details.html?region=Northwest",
+                                2: "details.html?region=Northeast",
+                                3: "details.html?region=South Puget Sound",
+                                4: "details.html?region=Pacific Cascade",
+                                5: "details.html?region=Southeast"
+                            };
+                            // Construct the URL to the associated HTML file
+                            const url = connection[index];
+
+                            // Open the associated HTML file in a new tab or window
+                            window.open(url, '_blank');
+                        }
+                    }
+                }
+            });
+        </script>
+    </div>
+
+
+    <!-- Footer -->
+    <footer class="text-center">
+        <a class="up-arrow" href="#myPage" data-toggle="tooltip" title="TO TOP">
+            <span class="glyphicon glyphicon-chevron-up"></span>
+        </a><br><br>
+    </footer>
+
+</body>
+</html>
