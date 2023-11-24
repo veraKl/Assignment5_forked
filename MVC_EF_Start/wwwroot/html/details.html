@@ -359,12 +359,12 @@
                         county.vehicles.forEach(vehicle => {
                             const row = document.createElement("tr");
                             row.innerHTML = `
-                                            <td>${county.name}</td>
-                                            <td>${vehicle.make}</td>
-                                            <td>${vehicle.model}</td>
-                                            <td>${vehicle.range}</td>
-                                            <td>${vehicle["Total Count"]}</td>
-                                        `;
+                                                <td>${county.name}</td>
+                                                <td>${vehicle.make}</td>
+                                                <td>${vehicle.model}</td>
+                                                <td>${vehicle.range}</td>
+                                                <td>${vehicle["Total Count"]}</td>
+                                            `;
                             tableBody.appendChild(row);
                         });
                     });
@@ -382,5 +382,13 @@
             populateTable(regionName);
         }
     </script>
+
+    <!-- Footer -->
+    <footer class="text-center">
+        <a class="up-arrow" href="#myPage" data-toggle="tooltip" title="TO TOP">
+            <img src="../img/electric_icon.png" alt="electric car icon">
+        </a><br><br>
+    </footer>
+
 </body>
 </html>
