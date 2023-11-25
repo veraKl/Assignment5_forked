@@ -112,5 +112,30 @@ namespace MVC_EF_Start.Controllers
             //return View();
 
         }
+
+        // connects to Home Page
+        public IActionResult EVHomePage()
+        {
+            return View();
+        }
+
+        // connects to main page with chart
+        public IActionResult MainPage()
+        {
+            return View();
+        }
+
+        // connects to detail page with tables and CRUD functions
+        public IActionResult DetailPage()
+        {
+            return View();
+        }
+
+        // connects to the about us page
+        public IActionResult AboutUsPage()
+        {
+            return View();
+        }
+
     }
 }
