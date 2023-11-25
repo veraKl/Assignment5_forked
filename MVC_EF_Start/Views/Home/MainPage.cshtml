@@ -1,6 +1,9 @@
 ﻿@*
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
+
+@model ChartModel
+
 @{
     Layout = null;
 }
@@ -48,7 +51,7 @@
             <div class="collapse navbar-collapse" id="myNavbar">
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="@Url.Action("EVHomePage", "Home")">Home</a></li>
-                    <li><a href="@Url.Action("MainPage", "Home")">Main Page</a></li>
+                    <li><a href="@Url.Action("RegionGrouping", "Home")">Main Page</a></li>
                     <li><a href="@Url.Action("DetailPage", "Home")">Details</a></li>
                     <li><a href="@Url.Action("AboutUsPage", "Home")">About Us</a></li>
                 </ul>
@@ -70,31 +73,21 @@
 
         <script>
             new Chart(document.getElementById("stackedbarchart"), {
-                type: 'horizontalBar',
+                type: '@Model.ChartType',
                 data: {
-                    labels: ["Olympic", "Northwest", "Northeast", "South Puget Sound", "Pacific Cascade", "Southeast"],
+                    labels: [@Html.Raw(Model.Labels)],
                     datasets: [
-                        {
-                            label: "Tesla",
-                            backgroundColor: "#3e95cd",
-                            data: [134, 242, 152, 605, 3970, 1684]
-                        },
-                        {
-                            label: "Nissan",
-                            backgroundColor: "#8e5ea2",
-                            data: [35, 31, 39, 146, 661, 618]
-                        },
-                        {
-                            label: "Chevrolet",
-                            backgroundColor: "#3cba9f",
-                            data: [22, 70, 90, 217, 504, 515]
-                        },
-                        {
-                            label: "Ford",
-                            backgroundColor: "#e8c3b9",
-                            data: [27, 42, 71, 113, 304, 316]
-                        },
-                    ]
+            @for (var i = 0; i < Model.Colors.Split(',').Length; i++)
+            {
+                <text>
+                            {
+                                label: 'Label' + i,
+                                backgroundColor: '@Model.Colors.Split(',')[i]',
+                                data: [@Model.Data.Split(',')[i]]
+                            },
+                </text>
+            }
+                        ]
                 },
                 options: {
                     scales: {
@@ -112,31 +105,12 @@
                     legend: {
                         display: true
                     },
-                    onClick: function (event, elements) {
-                        if (elements.length > 0) {
-                            // Get the label of the clicked bar
-                            const index = elements[0]._index;
-
-                            // Define the URLs to link to for each label (customize as needed)
-                            const connection = {
-                                0: "details.html?region=Olympic",
-                                1: "details.html?region=Northwest",
-                                2: "details.html?region=Northeast",
-                                3: "details.html?region=South Puget Sound",
-                                4: "details.html?region=Pacific Cascade",
-                                5: "details.html?region=Southeast"
-                            };
-                            // Construct the URL to the associated HTML file
-                            const url = connection[index];
-
-                            // Open the associated HTML file in a new tab or window
-                            window.open(url, '_blank');
-                        }
-                    }
                 }
             });
         </script>
     </div>
+
+
 
 
     <!-- Footer -->

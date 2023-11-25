@@ -115,4 +115,21 @@ namespace MVC_EF_Start.Models
         public Vehicle Vehicle { get; set; }
     }
 
+    // model for chart
+    public class ChartModel
+    {
+        public string ChartType { get; set; }
+        public string Labels { get; set; }
+
+        public string Colors { get; set; }
+        public string Data { get; set; }
+        public string Title { get; set; }
+    }
+
+    // model for regional aggregation
+    public class RegionViewModel
+    {
+        public string RegionName { get; set; }
+        public int TotalCars { get; set; }
+    }
 }

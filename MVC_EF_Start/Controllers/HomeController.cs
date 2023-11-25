@@ -104,8 +104,6 @@ namespace MVC_EF_Start.Controllers
                     // Log or print the inner exception
                     Console.WriteLine($"Inner Exception: {ex.InnerException.Message}");
                 }
-
-                // Handle the exception as needed
             }
 
             return View(waVehiclesList);
@@ -120,9 +118,83 @@ namespace MVC_EF_Start.Controllers
         }
 
         // connects to main page with chart
+        public IActionResult RegionGrouping()
+        {
+            // Manually specify the mapping between counties and regions
+            var countyRegionMapping = new Dictionary<string, string>
+        {
+            { "Stevens", "Northeast" },
+            { "Spokane", "Northeast" },
+            { "Skagit", "Northwest" },
+            { "Snohomish", "Northwest" },
+            { "Island", "Northwest" },
+            { "Chelan", "Southeast" },
+            { "Grant", "Southeast" },
+            { "Whitman", "Southeast" },
+            { "Yakima", "Southeast" },
+            { "Klickitat", "Southeast" },
+            { "Walla Walla", "Southeast" },
+            { "King", "South Puget Sound" },
+            { "Thurston", "South Puget Sound" },
+            { "Kitsap", "South Puget Sound" },
+            { "Clallam", "Olympic" },
+            { "Jefferson", "Olympic" },
+            { "Cowlitz", "Pacific Cascade" },
+            { "Clark", "Pacific Cascade" }
+            
+        };
+
+            var countyNames = dbContext.Counties.Select(c => c.CountyName).ToList();
+
+            var regionData = dbContext.Vehicles
+                .Include(v => v.CountyNavigation)
+                .GroupBy(v => v.CountyNavigation.CountyName)
+                .Where(g => countyNames.Contains(g.Key))  // Use countyNames instead of dictionary
+                .Select(g => new RegionViewModel
+                {
+                    RegionName = countyRegionMapping[g.Key],
+                    TotalCars = g.Count()
+                })
+                .GroupBy(r => r.RegionName)
+                .Select(g => new RegionViewModel
+                {
+                    RegionName = g.Key,
+                    TotalCars = g.Sum(r => r.TotalCars)
+                })
+                .ToList();
+
+
+            // Store the region data in TempData
+            TempData["RegionData"] = regionData;
+
+            return RedirectToAction("MainPage");
+        }
+
         public IActionResult MainPage()
         {
-            return View();
+            var regionData = TempData["RegionData"] as List<RegionViewModel>;
+
+            if (regionData == null)
+            {
+                return View();
+            }
+            else
+            {
+                string[] ChartLabels = regionData.Select(r => r.RegionName).ToArray();
+                string[] ChartColors = new string[] { "#74976D", "#5A7ABE", "#97B859", "#BA7416", "#C65308", "#9DB6DC" };
+                int[] ChartData = regionData.Select(r => r.TotalCars).ToArray();
+
+                ChartModel Model = new ChartModel
+                {
+                    ChartType = "horizontalBar",
+                    Labels = String.Join(",", ChartLabels.Select(d => "'" + d + "'")),
+                    Colors = String.Join(",", ChartColors.Select(d => "\"" + d + "\"")),
+                    Data = String.Join(",", ChartData.Select(d => d)),
+                    Title = "Electric Vehicles in Washington State"
+                };
+
+                return View(Model);
+            }
         }
 
         // connects to detail page with tables and CRUD functions
