@@ -163,6 +163,10 @@ namespace MVC_EF_Start.Controllers
                 })
                 .ToList();
 
+            
+
+
+
 
             // Store the region data in TempData
             TempData["RegionData"] = regionData;
