@@ -1,11 +1,18 @@
 ﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+   For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
 
-@model ChartModel
+@model MVC_EF_Start.Models.ChartModel
 
-@{
-    Layout = null;
+@if (Model == null)
+{
+    <p style="color: red;">Model is null!</p>
+}
+else
+{
+    <p>ChartType: @Model.ChartType</p>
+    <p>Data: @Model.Data</p>
+    <!-- Add similar lines for other properties -->
 }
 
 <!DOCTYPE html>
@@ -14,8 +21,8 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="../css/StyleSheetFormatting.css">
-    <link rel="stylesheet" href="../css/StyleSheet_common.css">
+    <link rel="stylesheet" href="@Url.Content("~/css/StyleSheetFormatting.css")">
+    <link rel="stylesheet" href="@Url.Content("~/css/StyleSheet_common.css")">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.js"></script>
@@ -32,7 +39,6 @@
             text-align: center;
         }
     </style>
-
 
 </head>
 
@@ -61,57 +67,61 @@
 
     <div class="information">
         <h1>Electric Vehicles in Washington State</h1>
-
-        <p>Below is a graph of the population of electric vehicle makes in the state of Washington. 
-        Click on a regional bar to see more information about the electric cars popular in the area.</p>
+        <p>
+            Below is a graph of the population of electric vehicle makes in the state of Washington.
+            Click on a regional bar to see more information about the electric cars popular in the area.
+        </p>
     </div>
 
     <div class="main">
-        <p style="max-width:1000px; margin: auto;">
-            <canvas id="stackedbarchart" width="800" height="400"></canvas>
-        </p>
-
+        <p style="max-width:1000px; margin: auto;"> </p>
+        <canvas id="myChart" width="400" height="400"></canvas>
         <script>
-            new Chart(document.getElementById("stackedbarchart"), {
-                type: '@Model.ChartType',
-                data: {
-                    labels: [@Html.Raw(Model.Labels)],
-                    datasets: [
-            @for (var i = 0; i < Model.Colors.Split(',').Length; i++)
-            {
-                <text>
-                            {
-                                label: 'Label' + i,
-                                backgroundColor: '@Model.Colors.Split(',')[i]',
-                                data: [@Model.Data.Split(',')[i]]
-                            },
-                </text>
+            var ctx = document.getElementById('myChart').getContext('2d');
+            var data = @Html.Raw(Model.Data);
+            var labels = @Html.Raw(Model.Labels);
+            var chartType = '@Model.ChartType';
+
+            console.log("Data before chart initialization: ", data);
+            console.log("Labels before chart initialization: ", labels);
+            console.log("Chart type: ", chartType);
+
+            // Check if data is not an empty array
+            if (data.length > 0) {
+                var myChart = new Chart(ctx, {
+                    type: chartType,
+                    data: {
+                        labels: labels,
+                        datasets: [{
+                            label: '@Model.Title',
+                            data: data,
+                            backgroundColor: @Html.Raw(Model.Colors)
+                            }]
+                    },
+                    options: {
+                        scales: {
+                            xAxes: [
+                                {
+                                    stacked: true
+                                }
+                            ],
+                            yAxes: [
+                                {
+                                    stacked: true
+                                }
+                            ]
+                        },
+                        legend: {
+                            display: true
+                        },
+                    }
+                });
+            } else {
+                // Handle the case where the data is empty
+                console.log("No data available for the chart.");
             }
-                        ]
-                },
-                options: {
-                    scales: {
-                        xAxes: [
-                            {
-                                stacked: true
-                            }
-                        ],
-                        yAxes: [
-                            {
-                                stacked: true
-                            }
-                        ]
-                    },
-                    legend: {
-                        display: true
-                    },
-                }
-            });
         </script>
     </div>
-
-
-
 
     <!-- Footer -->
     <footer class="text-center">

@@ -1,5 +1,4 @@
 ﻿using Newtonsoft.Json;
-using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -38,7 +37,6 @@ namespace MVC_EF_Start.Models
         [ForeignKey(nameof(ModelNavigation))]
         public int ModelId { get; set; }
 
-
         // Navigation properties. 
         // helps with entity relationships
         public State StateNavigation { get; set; }
@@ -47,7 +45,6 @@ namespace MVC_EF_Start.Models
         public Model ModelNavigation { get; set; }
         public Range RangeNavigation { get; set; }
     }
- 
 
     public class State
     {
@@ -118,9 +115,8 @@ namespace MVC_EF_Start.Models
     // model for chart
     public class ChartModel
     {
-        public string ChartType { get; set; }
+        public string ChartType { get; set; } = "bar"; // Default chart type
         public string Labels { get; set; }
-
         public string Colors { get; set; }
         public string Data { get; set; }
         public string Title { get; set; }

@@ -1,9 +1,11 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿#nullable enable
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using MVC_EF_Start.DataAccess;
+
 // https://stackoverflow.com/a/58072137/1385857
 using Microsoft.Extensions.Hosting;
 
@@ -30,6 +32,8 @@ namespace MVC_EF_Start
             //services.AddMvc();
             // https://stackoverflow.com/a/58772555/1385857
             services.AddMvc(option => option.EnableEndpointRouting = false);
+
+            services.AddSession();
         }
 
         // this is the version from the MVC template
@@ -41,6 +45,7 @@ namespace MVC_EF_Start
                 var context = serviceScope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
                 context.Database.EnsureCreated();
             }
+            app.UseSession();
 
             // https://stackoverflow.com/a/58072137/1385857
             if (env.IsDevelopment())
@@ -59,7 +64,7 @@ namespace MVC_EF_Start
             {
                 routes.MapRoute(
               name: "default",
-              template: "{controller=Home}/{action=EVHomePage}/{id?}");
+              template: "{controller=Home}/{action=MainPage}/{id?}");
             });
         }
     }
