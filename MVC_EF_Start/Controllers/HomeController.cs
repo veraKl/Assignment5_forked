@@ -11,6 +11,10 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using static System.Formats.Asn1.AsnWriter;
 using static System.Runtime.InteropServices.JavaScript.JSType;
+using System.Data;
+using System.IO;
+using MVC_EF_Start.Data;
+using static MVC_EF_Start.Models.EFModels2;
 
 namespace MVC_EF_Start.Controllers
 {
@@ -87,6 +91,105 @@ namespace MVC_EF_Start.Controllers
 
             return View(waVehiclesList);
         }
+
+        public IActionResult ImportData()
+        {
+            string filePath = "../Data/EVData.xlsx";
+
+            DataReader excelReader = new DataReader();
+            List<ExcelDataViewModel> excelDataList = excelReader.ReadExcel(filePath);
+
+            foreach (var excelData in excelDataList)
+            {
+                var county = new DCounty
+                {
+                    CountyName = excelData.County,
+                };
+
+                // Check if the county already exists
+                var existingCounty = dbContext.DCounties.SingleOrDefault(c => c.CountyName == county.CountyName);
+
+                if (existingCounty == null)
+                {
+                    // If not, add the county to the database
+                    dbContext.DCounties.Add(county);
+                    dbContext.SaveChanges();
+
+                    // Map ExcelDataViewModel to DMake
+                    var make = new DMake
+                    {
+                        MakeName = excelData.Make,
+                        CountyID = county.CountyID,
+                    };
+
+                    // Map ExcelDataViewModel to DModel
+                    var model = new DModel
+                    {
+                        ModelName = excelData.Model,
+                        CountyID = county.CountyID,
+                        // Map other properties for DModel if needed
+                    };
+
+                    // Map ExcelDataViewModel to DVehicle
+                    var vehicle = new DVehicle
+                    {
+                        VIN = excelData.VIN,
+                        MakeID = make.MakeID,
+                        ModelID = model.ModelID,
+                        Range = excelData.ElectricRange,
+                        CountyID = county.CountyID,
+                        // Map other properties for DVehicles if needed
+                    };
+
+                    // Save changes to the database
+                    dbContext.DMakes.Add(make);
+                    dbContext.DModels.Add(model);
+                    dbContext.DVehicles.Add(vehicle);
+                }
+                else
+                {
+                    // If the county already exists, update related entities if needed
+                    // Map ExcelDataViewModel to DMake
+                    var make = new DMake
+                    {
+                        MakeName = excelData.Make,
+                        CountyID = existingCounty.CountyID,
+                        // Map other properties for DMake if needed
+                    };
+
+                    // Map ExcelDataViewModel to DModel
+                    var model = new DModel
+                    {
+                        ModelName = excelData.Model,
+                        CountyID = existingCounty.CountyID,
+                        // Map other properties for DModel if needed
+                    };
+
+                    // Map ExcelDataViewModel to DVehicle
+                    var vehicle = new DVehicle
+                    {
+                        VIN = excelData.VIN,
+                        MakeID = make.MakeID,
+                        ModelID = model.ModelID,
+                        Range = excelData.ElectricRange,
+                        CountyID = existingCounty.CountyID,
+                        // Map other properties for DVehicles if needed
+                    };
+
+                    // Save changes to the database
+                    dbContext.DMakes.Add(make);
+                    dbContext.DModels.Add(model);
+                    dbContext.DVehicles.Add(vehicle);
+                }
+            }
+
+            // Save changes to the database
+            dbContext.SaveChanges();
+
+            return View();
+
+        }
+
 
         public IActionResult EVHomePage()
         {

@@ -8,6 +8,13 @@ using MVC_EF_Start.DataAccess;
 
 // https://stackoverflow.com/a/58072137/1385857
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
+using System.ComponentModel;
+using System.IO;
+using System;
+using System.Data;
+using System.Data.OleDb;
+
 
 namespace MVC_EF_Start
 {
@@ -34,10 +41,39 @@ namespace MVC_EF_Start
             services.AddMvc(option => option.EnableEndpointRouting = false);
 
             services.AddSession();
+
+            // Register the hosted service
+            services.AddHostedService<DataImportService>();
+        }
+    }
+
+        public class DataImportService : IHostedService
+        {
+            private readonly IServiceProvider _serviceProvider;
+
+            public DataImportService(IServiceProvider serviceProvider)
+            {
+                _serviceProvider = serviceProvider;
+            }
+
+            public async Task StartAsync(CancellationToken cancellationToken)
+            {
+                using (var scope = _serviceProvider.CreateScope())
+                {
+                    var context = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
+
+                    await context.SaveChangesAsync(); // Save changes to the database
+                }
+            }
+
+            public Task StopAsync(CancellationToken cancellationToken) => Task.CompletedTask;
         }
 
-        // this is the version from the MVC template
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+
+        /*
+
+            // this is the version from the MVC template
+            public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             //This ensures that the database and tables are created as per the Models.
             using (var serviceScope = app.ApplicationServices.GetService<IServiceScopeFactory>().CreateScope())
@@ -67,5 +103,6 @@ namespace MVC_EF_Start
               template: "{controller=Home}/{action=MainPage}/{id?}");
             });
         }
+        */
     }
 }
