@@ -143,8 +143,7 @@
                         <tr>
                             <th>County</th>
                             <th>Make</th>
-                            <th>Model</th>
-                            <th>Electric Range</th>
+                            <th>Avg. Electric Range</th>
                             <th>Total EVs</th>
                         </tr>
                     </thead>
@@ -183,8 +182,6 @@
             <input type="text" id="county" name="county" size="10" />
             <label for="make">Make:</label>
             <input type="text" id="make" name="make" size="10" />
-            <label for="model">Model:</label>
-            <input type="text" id="model" name="model" size="10" />
             <label for="electricRange">Electric Range:</label>
             <input type="text" id="electricRange" name="electricRange" size="10" />
 
@@ -203,25 +200,45 @@
                 region: 'Olympic',
                 counties: [
                     {
-                        name: 'Yakima',
+                        name: 'Callam',
                         vehicles: [
-                            { make: 'Tesla', model: 'Model 3', range: '250 miles', "Total Count": 200 },
-                            { make: 'Nissan', model: 'Leaf', range: '150 miles', "Total Count": 100 },
-                            { make: 'Ford', model: 'MUSTANG MACH-E', range: '160 miles', "Total Count": 150 },
-                            { make: 'Kia', model: 'NIRO', range: '100 miles', "Total Count": 100 },
-                            { make: 'BMW', model: 'X5', range: '180 miles', "Total Count": 120 },
-                            { make: 'Chevrolet', model: 'Bolt EV', range: '259 miles', "Total Count": 220 },
+                            { make: 'Tesla', range: '208 miles', "Total Count": 4 },
+                            { make: 'Nissan', range: '182 miles', "Total Count": 5 },
+                            { make: 'Chevrolet', range: '263 miles', "Total Count": 1 },
+                            { make: 'Ford', range: '311 miles', "Total Count": 5 },
+                            { make: 'Volvo', range: '280 miles', "Total Count": 3 },
+                            { make: 'Toyota', range: '255 miles', "Total Count": 3 },
+                            //{ make: 'Kia', range: '100 miles', "Total Count": 100 },
+                            { make: 'Hyundai' range: '261 miles', "Total Count": 1 },
+                            //{ make: 'Porsche', range: '259 miles', "Total Count": 220 },
                         ]
                     },
                     {
-                        name: 'King',
+                        name: 'Jefferson',
                         vehicles: [
-                            { make: 'Chevrolet', model: 'Bolt EV', range: '259 miles', "Total Count": 220 },
-                            { make: 'Tesla', model: 'Model S', range: '250 miles', "Total Count": 120 },
-                            { make: 'Nissan', model: 'Leaf', range: '150 miles', "Total Count": 10 },
-                            { make: 'Ford', model: 'MUSTANG MACH-E', range: '160 miles', "Total Count": 140 },
-                            { make: 'Kia', model: 'NIRO', range: '100 miles', "Total Count": 90 },
-                            { make: 'BMW', model: 'X5', range: '130 miles', "Total Count": 110 },
+                            { make: 'Tesla', range: '208 miles', "Total Count": 4 },
+                            { make: 'Nissan', range: '182 miles', "Total Count": 7 },
+                            { make: 'Chevrolet', range: '263 miles', "Total Count": 11 },
+                            { make: 'Ford', range: '311 miles', "Total Count": 5 },
+                            //{ make: 'Volvo', range: '280 miles', "Total Count": 3 },
+                            //{ make: 'Toyota', range: '255 miles', "Total Count": 3 },
+                            { make: 'Kia', range: '264 miles', "Total Count": 4 },
+                            { make: 'Hyundai' range: '261 miles', "Total Count": 4 },
+                            { make: 'Porsche', range: '223 miles', "Total Count": 2 },
+                        ]
+                    },
+                    {
+                        name: 'Grays Harbor',
+                        vehicles: [
+                            { make: 'Tesla', range: '208 miles', "Total Count": 1 },
+                            //{ make: 'Nissan', range: '182 miles', "Total Count": 7 },
+                            { make: 'Chevrolet', range: '263 miles', "Total Count": 3 },
+                            { make: 'Ford', range: '311 miles', "Total Count": 2 },
+                            { make: 'Volvo', range: '280 miles', "Total Count": 1 },
+                            //{ make: 'Toyota', range: '255 miles', "Total Count": 3 },
+                            { make: 'Kia', range: '264 miles', "Total Count": 2 },
+                            { make: 'Hyundai' range: '261 miles', "Total Count": 1 },
+                            { make: 'Porsche', range: '223 miles', "Total Count": 1 },
                         ]
                     }
                 ]
@@ -230,25 +247,45 @@
                 region: 'Northeast',
                 counties: [
                     {
-                        name: 'Island',
+                        name: 'Stevens',
                         vehicles: [
-                            { make: 'Tesla', model: 'Model 3', range: '250 miles', "Total Count": 200 },
-                            { make: 'Nissan', model: 'Leaf', range: '150 miles', "Total Count": 10 },
-                            { make: 'Chevrolet', model: 'Bolt EV', range: '259 miles', "Total Count": 220 },
-                            { make: 'Ford', model: 'MUSTANG MACH-E', range: '160 miles', "Total Count": 140 },
-                            { make: 'Kia', model: 'NIRO', range: '100 miles', "Total Count": 90 },
-                            { make: 'BMW', model: 'X5', range: '130 miles', "Total Count": 110 },
+                            { make: 'Tesla', range: '208 miles', "Total Count": 1 },
+                            { make: 'Nissan', range: '182 miles', "Total Count": 1 },
+                            { make: 'Chevrolet', range: '263 miles', "Total Count": 2 },
+                            { make: 'Ford', range: '311 miles', "Total Count": 1 },
+                            { make: 'Volvo', range: '280 miles', "Total Count": 2 },
+                            { make: 'Toyota', range: '255 miles', "Total Count": 1 },
+                            //{ make: 'Kia', range: '264 miles', "Total Count": 2 },
+                            { make: 'Hyundai' range: '261 miles', "Total Count": 1 },
+                            //{ make: 'Porsche', range: '223 miles', "Total Count": 1 },
                         ]
                     },
                     {
-                        name: 'Snohomish',
+                        name: 'Spokane',
                         vehicles: [
-                            { make: 'Tesla', model: 'Model 3', range: '250 miles', "Total Count": 120 },
-                            { make: 'Nissan', model: 'Leaf', range: '150 miles', "Total Count": 140 },
-                            { make: 'Chevrolet', model: 'Bolt EV', range: '259 miles', "Total Count": 120 },
-                            { make: 'Ford', model: 'MUSTANG MACH-E', range: '160 miles', "Total Count": 40 },
-                            { make: 'Kia', model: 'NIRO', range: '100 miles', "Total Count": 110 },
-                            { make: 'BMW', model: 'X5', range: '130 miles', "Total Count": 200 },
+                            { make: 'Tesla', range: '208 miles', "Total Count": 16 },
+                            { make: 'Nissan', range: '182 miles', "Total Count": 3 },
+                            { make: 'Chevrolet', range: '263 miles', "Total Count": 11 },
+                            { make: 'Ford', range: '311 miles', "Total Count": 9 },
+                            { make: 'Volvo', range: '280 miles', "Total Count": 11 },
+                            { make: 'Toyota', range: '255 miles', "Total Count": 3 },
+                            { make: 'Kia', range: '264 miles', "Total Count": 3 },
+                            { make: 'Hyundai' range: '261 miles', "Total Count": 7 },
+                            { make: 'Porsche', range: '223 miles', "Total Count": 7 },
+                        ]
+                    },
+                    {
+                        name: 'Okanogan',
+                        vehicles: [
+                            //{ make: 'Tesla', range: '208 miles', "Total Count": 1 },
+                            //{ make: 'Nissan', range: '182 miles', "Total Count": 7 },
+                            { make: 'Chevrolet', range: '263 miles', "Total Count": 1 },
+                            { make: 'Ford', range: '311 miles', "Total Count": 1 },
+                            { make: 'Volvo', range: '280 miles', "Total Count": 3 },
+                            //{ make: 'Toyota', range: '255 miles', "Total Count": 3 },
+                            //{ make: 'Kia', range: '264 miles', "Total Count": 2 },
+                            //{ make: 'Hyundai' range: '261 miles', "Total Count": 1 },
+                            //{ make: 'Porsche', range: '223 miles', "Total Count": 1 },
                         ]
                     }
                 ]
@@ -257,14 +294,73 @@
                 region: 'Northwest',
                 counties: [
                     {
-                        name: 'Kitsap',
+                        name: 'Island',
                         vehicles: [
-                            { make: 'Tesla', model: 'Model 3', range: '250 miles', "Total Count": 120 },
-                            { make: 'Nissan', model: 'Leaf', range: '150 miles', "Total Count": 140 },
-                            { make: 'Chevrolet', model: 'Bolt EV', range: '259 miles', "Total Count": 120 },
-                            { make: 'Ford', model: 'MUSTANG MACH-E', range: '160 miles', "Total Count": 40 },
-                            { make: 'Kia', model: 'NIRO', range: '100 miles', "Total Count": 110 },
-                            { make: 'BMW', model: 'X5', range: '130 miles', "Total Count": 200 },
+                            { make: 'Tesla', range: '208 miles', "Total Count": 13 },
+                            { make: 'Nissan', range: '182 miles', "Total Count": 1 },
+                            { make: 'Chevrolet', range: '263 miles', "Total Count": 9 },
+                            { make: 'Ford', range: '311 miles', "Total Count": 6 },
+                            { make: 'Volvo', range: '280 miles', "Total Count": 9 },
+                            { make: 'Toyota', range: '255 miles', "Total Count": 1 },
+                            { make: 'Kia', range: '264 miles', "Total Count": 8 },
+                            { make: 'Hyundai' range: '261 miles', "Total Count": 7 },
+                            { make: 'Porsche', range: '223 miles', "Total Count": 3 },
+                        ]
+                    },
+                    {
+                        name: 'Snohomish',
+                        vehicles: [
+                            { make: 'Tesla', range: '208 miles', "Total Count": 104 },
+                            { make: 'Nissan', range: '182 miles', "Total Count": 24 },
+                            { make: 'Chevrolet', range: '263 miles', "Total Count": 36 },
+                            { make: 'Ford', range: '311 miles', "Total Count": 67 },
+                            { make: 'Volvo', range: '280 miles', "Total Count": 73 },
+                            { make: 'Toyota', range: '255 miles', "Total Count": 7 },
+                            { make: 'Kia', range: '264 miles', "Total Count": 31 },
+                            { make: 'Hyundai' range: '261 miles', "Total Count": 39 },
+                            { make: 'Porsche', range: '223 miles', "Total Count": 18 },
+                        ]
+                    },
+                    {
+                        name: 'Skagit',
+                        vehicles: [
+                            { make: 'Tesla', range: '208 miles', "Total Count": 4 },
+                            { make: 'Nissan', range: '182 miles', "Total Count": 1 },
+                            { make: 'Chevrolet', range: '263 miles', "Total Count": 6 },
+                            { make: 'Ford', range: '311 miles', "Total Count": 9 },
+                            { make: 'Volvo', range: '280 miles', "Total Count": 8 },
+                            //{ make: 'Toyota', range: '255 miles', "Total Count": 1 },
+                            { make: 'Kia', range: '264 miles', "Total Count": 2 },
+                            { make: 'Hyundai' range: '261 miles', "Total Count": 6 },
+                            //{ make: 'Porsche', range: '223 miles', "Total Count": 1 },
+                        ]
+                    },
+                    {
+                        name: 'Whatcom',
+                        vehicles: [
+                            { make: 'Tesla', range: '208 miles', "Total Count": 11 },
+                            { make: 'Nissan', range: '182 miles', "Total Count": 2 },
+                            { make: 'Chevrolet', range: '263 miles', "Total Count": 5 },
+                            { make: 'Ford', range: '311 miles', "Total Count": 12 },
+                            { make: 'Volvo', range: '280 miles', "Total Count": 11 },
+                            { make: 'Toyota', range: '255 miles', "Total Count": 5 },
+                            { make: 'Kia', range: '264 miles', "Total Count": 11 },
+                            { make: 'Hyundai' range: '261 miles', "Total Count": 8 },
+                            { make: 'Porsche', range: '223 miles', "Total Count": 5 },
+                        ]
+                    },
+                    {
+                        name: 'San Juan',
+                        vehicles: [
+                            { make: 'Tesla', range: '208 miles', "Total Count": 1 },
+                            { make: 'Nissan', range: '182 miles', "Total Count": 1 },
+                            //{ make: 'Chevrolet', range: '263 miles', "Total Count": 11 },
+                            { make: 'Ford', range: '311 miles', "Total Count": 3 },
+                            { make: 'Volvo', range: '280 miles', "Total Count": 3 },
+                            { make: 'Toyota', range: '255 miles', "Total Count": 2 },
+                            //{ make: 'Kia', range: '264 miles', "Total Count": 3 },
+                            { make: 'Hyundai' range: '261 miles', "Total Count": 3 },
+                            { make: 'Porsche', range: '223 miles', "Total Count": 1 },
                         ]
                     }
                 ]
@@ -273,25 +369,73 @@
                 region: 'South Puget Sound',
                 counties: [
                     {
-                        name: 'Douglas',
+                        name: 'King',
                         vehicles: [
-                            { make: 'Tesla', model: 'Model 3', range: '250 miles', "Total Count": 200 },
-                            { make: 'Nissan', model: 'Leaf', range: '150 miles', "Total Count": 100 },
-                            { make: 'Ford', model: 'MUSTANG MACH-E', range: '160 miles', "Total Count": 150 },
-                            { make: 'Kia', model: 'NIRO', range: '100 miles', "Total Count": 100 },
-                            { make: 'BMW', model: 'X5', range: '180 miles', "Total Count": 120 },
-                            { make: 'Chevrolet', model: 'Bolt EV', range: '259 miles', "Total Count": 220 },
+                            { make: 'Tesla', range: '208 miles', "Total Count": 881 },
+                            { make: 'Nissan', range: '182 miles', "Total Count": 241 },
+                            { make: 'Chevrolet', range: '263 miles', "Total Count": 356 },
+                            { make: 'Ford', range: '311 miles', "Total Count": 440 },
+                            { make: 'Volvo', range: '280 miles', "Total Count": 625 },
+                            { make: 'Toyota', range: '255 miles', "Total Count": 171 },
+                            { make: 'Kia', range: '264 miles', "Total Count": 319 },
+                            { make: 'Hyundai' range: '261 miles', "Total Count": 276 },
+                            { make: 'Porsche', range: '223 miles', "Total Count": 267 },
+                        ]
+                    },
+                    {
+                        name: 'Kitsap',
+                        vehicles: [
+                            { make: 'Tesla', range: '208 miles', "Total Count": 56 },
+                            { make: 'Nissan', range: '182 miles', "Total Count": 32 },
+                            { make: 'Chevrolet', range: '263 miles', "Total Count": 46 },
+                            { make: 'Ford', range: '311 miles', "Total Count": 44 },
+                            { make: 'Volvo', range: '280 miles', "Total Count": 60 },
+                            { make: 'Toyota', range: '255 miles', "Total Count": 10 },
+                            { make: 'Kia', range: '264 miles', "Total Count": 29 },
+                            { make: 'Hyundai' range: '261 miles', "Total Count": 22 },
+                            { make: 'Porsche', range: '223 miles', "Total Count": 15 },
+                        ]
+                    },
+                    {
+                        name: 'Thurston',
+                        vehicles: [
+                            { make: 'Tesla', range: '208 miles', "Total Count": 39 },
+                            { make: 'Nissan', range: '182 miles', "Total Count": 14 },
+                            { make: 'Chevrolet', range: '263 miles', "Total Count": 63 },
+                            { make: 'Ford', range: '311 miles', "Total Count": 54 },
+                            { make: 'Volvo', range: '280 miles', "Total Count": 28 },
+                            { make: 'Toyota', range: '255 miles', "Total Count": 10 },
+                            { make: 'Kia', range: '264 miles', "Total Count": 28 },
+                            { make: 'Hyundai' range: '261 miles', "Total Count": 30 },
+                            { make: 'Porsche', range: '223 miles', "Total Count": 5 },
                         ]
                     },
                     {
                         name: 'Pierce',
                         vehicles: [
-                            { make: 'Chevrolet', model: 'Bolt EV', range: '259 miles', "Total Count": 220 },
-                            { make: 'Tesla', model: 'Model S', range: '250 miles', "Total Count": 120 },
-                            { make: 'Nissan', model: 'Leaf', range: '150 miles', "Total Count": 10 },
-                            { make: 'Ford', model: 'MUSTANG MACH-E', range: '160 miles', "Total Count": 140 },
-                            { make: 'Kia', model: 'NIRO', range: '100 miles', "Total Count": 90 },
-                            { make: 'BMW', model: 'X5', range: '130 miles', "Total Count": 110 },
+                            { make: 'Tesla', range: '208 miles', "Total Count": 22 },
+                            { make: 'Nissan', range: '182 miles', "Total Count": 6 },
+                            { make: 'Chevrolet', range: '263 miles', "Total Count": 29 },
+                            { make: 'Ford', range: '311 miles', "Total Count": 34 },
+                            { make: 'Volvo', range: '280 miles', "Total Count": 43 },
+                            { make: 'Toyota', range: '255 miles', "Total Count": 5 },
+                            { make: 'Kia', range: '264 miles', "Total Count": 23 },
+                            { make: 'Hyundai' range: '261 miles', "Total Count": 23 },
+                            { make: 'Porsche', range: '223 miles', "Total Count": 18 },
+                        ]
+                    },
+                    {
+                        name: 'Mason',
+                        vehicles: [
+                            { make: 'Tesla', range: '208 miles', "Total Count": 5 },
+                            //{ make: 'Nissan', range: '182 miles', "Total Count": 1 },
+                            { make: 'Chevrolet', range: '263 miles', "Total Count": 2 },
+                            { make: 'Ford', range: '311 miles', "Total Count": 1 },
+                            { make: 'Volvo', range: '280 miles', "Total Count": 3 },
+                            //{ make: 'Toyota', range: '255 miles', "Total Count": 1 },
+                            //{ make: 'Kia', range: '264 miles', "Total Count": 8 },
+                            { make: 'Hyundai' range: '261 miles', "Total Count": 1 },
+                            { make: 'Porsche', range: '223 miles', "Total Count": 1 },
                         ]
                     }
                 ]
@@ -302,23 +446,71 @@
                     {
                         name: 'Clark',
                         vehicles: [
-                            { make: 'Tesla', model: 'Model 3', range: '250 miles', "Total Count": 200 },
-                            { make: 'Nissan', model: 'Leaf', range: '150 miles', "Total Count": 10 },
-                            { make: 'Chevrolet', model: 'Bolt EV', range: '259 miles', "Total Count": 220 },
-                            { make: 'Ford', model: 'MUSTANG MACH-E', range: '160 miles', "Total Count": 140 },
-                            { make: 'Kia', model: 'NIRO', range: '100 miles', "Total Count": 90 },
-                            { make: 'BMW', model: 'X5', range: '130 miles', "Total Count": 110 },
+                            { make: 'Tesla', range: '208 miles', "Total Count": 95 },
+                            { make: 'Nissan', range: '182 miles', "Total Count": 28 },
+                            { make: 'Chevrolet', range: '263 miles', "Total Count": 104 },
+                            { make: 'Ford', range: '311 miles', "Total Count": 89 },
+                            { make: 'Volvo', range: '280 miles', "Total Count": 58 },
+                            { make: 'Toyota', range: '255 miles', "Total Count": 50 },
+                            { make: 'Kia', range: '264 miles', "Total Count": 54 },
+                            { make: 'Hyundai' range: '261 miles', "Total Count": 79 },
+                            { make: 'Porsche', range: '223 miles', "Total Count": 27 },
                         ]
                     },
                     {
-                        name: 'Thurston',
+                        name: 'Cowlitz',
                         vehicles: [
-                            { make: 'Tesla', model: 'Model 3', range: '250 miles', "Total Count": 120 },
-                            { make: 'Nissan', model: 'Leaf', range: '150 miles', "Total Count": 140 },
-                            { make: 'Chevrolet', model: 'Bolt EV', range: '259 miles', "Total Count": 120 },
-                            { make: 'Ford', model: 'MUSTANG MACH-E', range: '160 miles', "Total Count": 40 },
-                            { make: 'Kia', model: 'NIRO', range: '100 miles', "Total Count": 110 },
-                            { make: 'BMW', model: 'X5', range: '130 miles', "Total Count": 200 },
+                            { make: 'Tesla', range: '208 miles', "Total Count": 12 },
+                            { make: 'Nissan', range: '182 miles', "Total Count": 1 },
+                            { make: 'Chevrolet', range: '263 miles', "Total Count": 15 },
+                            { make: 'Ford', range: '311 miles', "Total Count": 14 },
+                            { make: 'Volvo', range: '280 miles', "Total Count": 2 },
+                            { make: 'Toyota', range: '255 miles', "Total Count": 5 },
+                            { make: 'Kia', range: '264 miles', "Total Count": 3 },
+                            { make: 'Hyundai' range: '261 miles', "Total Count": 11 },
+                            //{ make: 'Porsche', range: '223 miles', "Total Count": 15 },
+                        ]
+                    },
+                    {
+                        name: 'Lewis',
+                        vehicles: [
+                            { make: 'Tesla', range: '208 miles', "Total Count": 3 },
+                            //{ make: 'Nissan', range: '182 miles', "Total Count": 14 },
+                            { make: 'Chevrolet', range: '263 miles', "Total Count": 4 },
+                            { make: 'Ford', range: '311 miles', "Total Count": 2 },
+                            { make: 'Volvo', range: '280 miles', "Total Count": 2 },
+                            { make: 'Toyota', range: '255 miles', "Total Count": 1 },
+                            { make: 'Kia', range: '264 miles', "Total Count": 2 },
+                            //{ make: 'Hyundai' range: '261 miles', "Total Count": 30 },
+                            //{ make: 'Porsche', range: '223 miles', "Total Count": 5 },
+                        ]
+                    },
+                    {
+                        name: 'Skamania',
+                        vehicles: [
+                            { make: 'Tesla', range: '208 miles', "Total Count": 4 },
+                            //{ make: 'Nissan', range: '182 miles', "Total Count": 6 },
+                            { make: 'Chevrolet', range: '263 miles', "Total Count": 1 },
+                            { make: 'Ford', range: '311 miles', "Total Count": 1 },
+                            { make: 'Volvo', range: '280 miles', "Total Count": 2 },
+                            //{ make: 'Toyota', range: '255 miles', "Total Count": 5 },
+                            { make: 'Kia', range: '264 miles', "Total Count": 2 },
+                            //{ make: 'Hyundai' range: '261 miles', "Total Count": 23 },
+                            //{ make: 'Porsche', range: '223 miles', "Total Count": 18 },
+                        ]
+                    },
+                    {
+                        name: 'Pacific',
+                        vehicles: [
+                            //{ make: 'Tesla', range: '208 miles', "Total Count": 5 },
+                            //{ make: 'Nissan', range: '182 miles', "Total Count": 1 },
+                            //{ make: 'Chevrolet', range: '263 miles', "Total Count": 2 },
+                            //{ make: 'Ford', range: '311 miles', "Total Count": 1 },
+                            //{ make: 'Volvo', range: '280 miles', "Total Count": 3 },
+                            { make: 'Toyota', range: '255 miles', "Total Count": 1 },
+                            //{ make: 'Kia', range: '264 miles', "Total Count": 8 },
+                            //{ make: 'Hyundai' range: '261 miles', "Total Count": 1 },
+                            //{ make: 'Porsche', range: '223 miles', "Total Count": 1 },
                         ]
                     }
                 ]
@@ -327,14 +519,87 @@
                 region: 'Southeast',
                 counties: [
                     {
-                        name: 'Spokane',
+                        name: 'Yakima',
                         vehicles: [
-                            { make: 'Tesla', model: 'Model 3', range: '250 miles', "Total Count": 120 },
-                            { make: 'Nissan', model: 'Leaf', range: '150 miles', "Total Count": 140 },
-                            { make: 'Chevrolet', model: 'Bolt EV', range: '259 miles', "Total Count": 120 },
-                            { make: 'Ford', model: 'MUSTANG MACH-E', range: '160 miles', "Total Count": 40 },
-                            { make: 'Kia', model: 'NIRO', range: '100 miles', "Total Count": 110 },
-                            { make: 'BMW', model: 'X5', range: '130 miles', "Total Count": 200 },
+                            { make: 'Tesla', range: '208 miles', "Total Count": 12 },
+                            { make: 'Nissan', range: '182 miles', "Total Count": 4 },
+                            { make: 'Chevrolet', range: '263 miles', "Total Count": 13 },
+                            { make: 'Ford', range: '311 miles', "Total Count": 10 },
+                            { make: 'Volvo', range: '280 miles', "Total Count": 3 },
+                            { make: 'Toyota', range: '255 miles', "Total Count": 7 },
+                            { make: 'Kia', range: '264 miles', "Total Count": 3 },
+                            { make: 'Hyundai' range: '261 miles', "Total Count": 2 },
+                            { make: 'Porsche', range: '223 miles', "Total Count": 2 },
+                        ]
+                    },
+                    {
+                        name: 'Whitman',
+                        vehicles: [
+                            //{ make: 'Tesla', range: '208 miles', "Total Count": 12 },
+                            //{ make: 'Nissan', range: '182 miles', "Total Count": 1 },
+                            { make: 'Chevrolet', range: '263 miles', "Total Count": 2 },
+                            { make: 'Ford', range: '311 miles', "Total Count": 1 },
+                            { make: 'Volvo', range: '280 miles', "Total Count": 1 },
+                            //{ make: 'Toyota', range: '255 miles', "Total Count": 5 },
+                            { make: 'Kia', range: '264 miles', "Total Count": 1 },
+                            { make: 'Hyundai' range: '261 miles', "Total Count": 1 },
+                            //{ make: 'Porsche', range: '223 miles', "Total Count": 15 },
+                        ]
+                    },
+                    {
+                        name: 'Grant',
+                        vehicles: [
+                            { make: 'Tesla', range: '208 miles', "Total Count": 3 },
+                            //{ make: 'Nissan', range: '182 miles', "Total Count": 28 },
+                            { make: 'Chevrolet', range: '263 miles', "Total Count": 6 },
+                            { make: 'Ford', range: '311 miles', "Total Count": 1 },
+                            { make: 'Volvo', range: '280 miles', "Total Count": 5 },
+                            //{ make: 'Toyota', range: '255 miles', "Total Count": 50 },
+                            //{ make: 'Kia', range: '264 miles', "Total Count": 54 },
+                            //{ make: 'Hyundai' range: '261 miles', "Total Count": 79 },
+                            { make: 'Porsche', range: '223 miles', "Total Count": 2 },
+                        ]
+                    },
+                    {
+                        name: 'Chelan',
+                        vehicles: [
+                            { make: 'Tesla', range: '208 miles', "Total Count": 12 },
+                            { make: 'Nissan', range: '182 miles', "Total Count": 1 },
+                            { make: 'Chevrolet', range: '263 miles', "Total Count": 15 },
+                            { make: 'Ford', range: '311 miles', "Total Count": 14 },
+                            { make: 'Volvo', range: '280 miles', "Total Count": 2 },
+                            { make: 'Toyota', range: '255 miles', "Total Count": 5 },
+                            { make: 'Kia', range: '264 miles', "Total Count": 3 },
+                            { make: 'Hyundai' range: '261 miles', "Total Count": 11 },
+                            //{ make: 'Porsche', range: '223 miles', "Total Count": 15 },
+                        ]
+                    },
+                    {
+                        name: 'Douglas',
+                        vehicles: [
+                            { make: 'Tesla', range: '208 miles', "Total Count": 2 },
+                            //{ make: 'Nissan', range: '182 miles', "Total Count": 28 },
+                            { make: 'Chevrolet', range: '263 miles', "Total Count": 2 },
+                            { make: 'Ford', range: '311 miles', "Total Count": 1 },
+                            { make: 'Volvo', range: '280 miles', "Total Count": 2 },
+                            //{ make: 'Toyota', range: '255 miles', "Total Count": 50 },
+                            { make: 'Kia', range: '264 miles', "Total Count": 1 },
+                            //{ make: 'Hyundai' range: '261 miles', "Total Count": 79 },
+                            { make: 'Porsche', range: '223 miles', "Total Count": 3 },
+                        ]
+                    },
+                    {
+                        name: 'Franklin',
+                        vehicles: [
+                            { make: 'Tesla', range: '208 miles', "Total Count": 1 },
+                            //{ make: 'Nissan', range: '182 miles', "Total Count": 1 },
+                            { make: 'Chevrolet', range: '263 miles', "Total Count": 2 },
+                            //{ make: 'Ford', range: '311 miles', "Total Count": 14 },
+                            //{ make: 'Volvo', range: '280 miles', "Total Count": 2 },
+                            //{ make: 'Toyota', range: '255 miles', "Total Count": 5 },
+                            //{ make: 'Kia', range: '264 miles', "Total Count": 3 },
+                            { make: 'Hyundai' range: '261 miles', "Total Count": 2 },
+                            //{ make: 'Porsche', range: '223 miles', "Total Count": 15 },
                         ]
                     }
                 ]
@@ -368,7 +633,6 @@
                             row.innerHTML = `
                                                     <td>${county.name}</td>
                                                     <td>${vehicle.make}</td>
-                                                    <td>${vehicle.model}</td>
                                                     <td>${vehicle.range}</td>
                                                     <td>${vehicle["Total Count"]}</td>
                                                 `;

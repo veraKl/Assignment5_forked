@@ -8,13 +8,6 @@ namespace MVC_EF_Start.DataAccess
   {
     public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options) { }
 
-        public DbSet<DRegion> DRegions { get; set; }
-        public DbSet<DCounty> DCounties { get; set; }
-        public DbSet<DMake> DMakes { get; set; }
-        public DbSet<DModel> DModels { get; set; }
-        public DbSet<DVehicle> DVehicles { get; set; }
-
-        /*
         public DbSet<State> States { get; set; }
         public DbSet<County> Counties { get; set; }
         public DbSet<Make> Makes { get; set; }
@@ -76,7 +69,7 @@ namespace MVC_EF_Start.DataAccess
 
             base.OnModelCreating(modelBuilder);
         }
-        */
+        
 
     }
 }

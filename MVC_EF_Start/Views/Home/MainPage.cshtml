@@ -2,19 +2,9 @@
    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
 
-@model MVC_EF_Start.Models.ChartModel
-
-@if (Model == null)
-{
-    <p style="color: red;">Model is null!</p>
+@{
+    Layout = null;
 }
-else
-{
-    <p>ChartType: @Model.ChartType</p>
-    <p>Data: @Model.Data</p>
-    <!-- Add similar lines for other properties -->
-}
-
 <!DOCTYPE html>
 
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
@@ -57,7 +47,7 @@ else
             <div class="collapse navbar-collapse" id="myNavbar">
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="@Url.Action("EVHomePage", "Home")">Home</a></li>
-                    <li><a href="@Url.Action("RegionGrouping", "Home")">Main Page</a></li>
+                    <li><a href="@Url.Action("MainPage", "Home")">Main Page</a></li>
                     <li><a href="@Url.Action("DetailPage", "Home")">Details</a></li>
                     <li><a href="@Url.Action("AboutUsPage", "Home")">About Us</a></li>
                 </ul>
@@ -75,51 +65,79 @@ else
 
     <div class="main">
         <p style="max-width:1000px; margin: auto;"> </p>
-        <canvas id="myChart" width="400" height="400"></canvas>
+        <canvas id="stackedbarchart" width="400" height="150"></canvas>
         <script>
-            var ctx = document.getElementById('myChart').getContext('2d');
-            var data = @Html.Raw(Model.Data);
-            var labels = @Html.Raw(Model.Labels);
-            var chartType = '@Model.ChartType';
+            new Chart(document.getElementById("stackedbarchart"), {
+                type: 'horizontalBar',
+                data: {
+                    labels: ["Olympic", "Northwest", "Northeast", "South Puget Sound", "Pacific Cascade", "Southeast"],
+                    datasets: [
+                        {
+                            label: "Tesla",
+                            backgroundColor: "#cd3700",
+                            data: [9, 133, 17, 1003, 114, 24]
+                        },
+                        {
+                            label: "Nissan",
+                            backgroundColor: "#ff6103",
+                            data: [12, 29, 4, 293, 29, 4]
+                        },
+                        {
+                            label: "Chevrolet",
+                            backgroundColor: "#ff9912",
+                            data: [15, 56, 14, 496, 124, 34]
+                        },
+                        {
+                            label: "Ford",
+                            backgroundColor: "#ffd700",
+                            data: [12, 97, 11, 573, 106, 19]
+                        }, 
+                        {
+                            label: "Volvo",
+                            backgroundColor: "#03a89e",
+                            data: [14, 104, 16, 759, 64, 19]
+                        }, 
+                        {
+                            label: "Toyota",
+                            backgroundColor: "#00688b",
+                            data: [10, 15, 4, 217, 57, 8]
+                        },
+                        {
+                            label: "Kia",
+                            backgroundColor: "#3d59ab",
+                            data: [6, 52, 3, 399, 61, 8]
+                        },
+                        {
+                            label: "Hyundai",
+                            backgroundColor: "#4682b4",
+                            data: [6, 70, 8, 352, 90, 12]
+                        },
+                        {
+                            label: "Porsche",
+                            backgroundColor: "#a32cc4",
+                            data: [3, 27, 7, 306, 27, 12]
+                        },
 
-            console.log("Data before chart initialization: ", data);
-            console.log("Labels before chart initialization: ", labels);
-            console.log("Chart type: ", chartType);
-
-            // Check if data is not an empty array
-            if (data.length > 0) {
-                var myChart = new Chart(ctx, {
-                    type: chartType,
-                    data: {
-                        labels: labels,
-                        datasets: [{
-                            label: '@Model.Title',
-                            data: data,
-                            backgroundColor: @Html.Raw(Model.Colors)
-                            }]
+                    ]
+                },
+                options: {
+                    scales: {
+                        xAxes: [
+                            {
+                                stacked: true
+                            }
+                        ],
+                        yAxes: [
+                            {
+                                stacked: true
+                            }
+                        ]
                     },
-                    options: {
-                        scales: {
-                            xAxes: [
-                                {
-                                    stacked: true
-                                }
-                            ],
-                            yAxes: [
-                                {
-                                    stacked: true
-                                }
-                            ]
-                        },
-                        legend: {
-                            display: true
-                        },
+                    legend: {
+                        display: true
                     }
-                });
-            } else {
-                // Handle the case where the data is empty
-                console.log("No data available for the chart.");
-            }
+                }
+            });
         </script>
     </div>
 
