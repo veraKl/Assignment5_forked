@@ -14,7 +14,38 @@
     <link rel="stylesheet" href="../css/StyleSheet_common.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script>
+        function handleSubmit() {
+            var radios = document.getElementsByName('drone');
+            var selectedOption;
 
+
+
+            for (var i = 0; i < radios.length; i++) {
+                if (radios[i].checked) {
+                    selectedOption = radios[i].value;
+                    break;
+                }
+            }
+
+
+
+            switch (selectedOption) {
+                case 'add':
+                    alert('Data successfully added');
+                    break;
+                case 'remove':
+                    alert('Data successfully removed');
+                    break;
+                case 'update':
+                    alert('Data successfully updated');
+                    break;
+                default:
+                    // Handle other cases if needed
+                    break;
+            }
+        }
+    </script>
     <style>
 
         body {
@@ -154,47 +185,62 @@
         </div>
 
         <div class="container-fluid">
-            <fieldset>
-                <p>Do you want to add your own car to the database? You can add, remove or update your car to get it reflected in the statistics! Please choose between the following options:</p>
+            <form onsubmit="handleSubmit(); return false;">
+                <fieldset>
+                    <p>Do you want to add your own car to the database? You can add, remove, or update your car to get it reflected in the statistics! Please choose between the following options:</p>
 
-                <legend></legend>
 
-                <div>
-                    <input type="radio" id="add" name="drone" value="add" checked />
-                    <label for="huey">Add</label>
-                </div>
 
-                <div>
-                    <input type="radio" id="remove" name="drone" value="remove" />
-                    <label for="remove">Remove</label>
-                </div>
+                    <legend></legend>
 
-                <div>
-                    <input type="radio" id="update" name="drone" value="update" />
-                    <label for="louie">Update</label>
-                </div>
-            </fieldset>
 
-            <br />
-            <label for="VIN">VIN:</label>
-            <input type="text" id="VIN" name="VIN" size="10" />
-            <label for="county">County:</label>
-            <input type="text" id="county" name="county" size="10" />
-            <label for="make">Make:</label>
-            <input type="text" id="make" name="make" size="10" />
-            <label for="electricRange">Electric Range:</label>
-            <input type="text" id="electricRange" name="electricRange" size="10" />
 
-            <br /> <br />
-            <input type="submit" value="Submit data">
+                    <div>
+                        <input type="radio" id="add" name="drone" value="add" checked />
+                        <label for="add">Add</label>
+                    </div>
 
+
+
+                    <div>
+                        <input type="radio" id="remove" name="drone" value="remove" />
+                        <label for="remove">Remove</label>
+                    </div>
+
+
+
+                    <div>
+                        <input type="radio" id="update" name="drone" value="update" />
+                        <label for="update">Update</label>
+                    </div>
+                </fieldset>
+
+
+
+                <br />
+                <label for="VIN">VIN:</label>
+                <input type="text" id="VIN" name="VIN" size="10" />
+                <label for="county">County:</label>
+                <input type="text" id="county" name="county" size="10" />
+                <label for="make">Make:</label>
+                <input type="text" id="make" name="make" size="10" />
+                <label for="model">Model:</label>
+                <input type="text" id="model" name="model" size="10" />
+                <label for="electricRange">Electric Range:</label>
+                <input type="text" id="electricRange" name="electricRange" size="10" />
+
+
+
+                <br /> <br />
+                <input type="submit" value="Submit data">
+            </form>
         </div>
 
     </div>
 
 
     <script>
-        // Sample data representing electric vehicles by county
+        
         const electricVehiclesData = [
             {
                 region: 'Olympic',
@@ -209,8 +255,8 @@
                             { make: 'Volvo', range: '280 miles', "Total Count": 3 },
                             { make: 'Toyota', range: '255 miles', "Total Count": 3 },
                             //{ make: 'Kia', range: '100 miles', "Total Count": 100 },
-                            { make: 'Hyundai' range: '261 miles', "Total Count": 1 },
-                            //{ make: 'Porsche', range: '259 miles', "Total Count": 220 },
+                            { make: 'Hyundai', range: '261 miles', "Total Count": 1 },
+                            { make: 'Porsche', range: '259 miles', "Total Count": 220 },
                         ]
                     },
                     {
@@ -223,7 +269,7 @@
                             //{ make: 'Volvo', range: '280 miles', "Total Count": 3 },
                             //{ make: 'Toyota', range: '255 miles', "Total Count": 3 },
                             { make: 'Kia', range: '264 miles', "Total Count": 4 },
-                            { make: 'Hyundai' range: '261 miles', "Total Count": 4 },
+                            { make: 'Hyundai', range: '261 miles', "Total Count": 4 },
                             { make: 'Porsche', range: '223 miles', "Total Count": 2 },
                         ]
                     },
@@ -237,7 +283,7 @@
                             { make: 'Volvo', range: '280 miles', "Total Count": 1 },
                             //{ make: 'Toyota', range: '255 miles', "Total Count": 3 },
                             { make: 'Kia', range: '264 miles', "Total Count": 2 },
-                            { make: 'Hyundai' range: '261 miles', "Total Count": 1 },
+                            { make: 'Hyundai', range: '261 miles', "Total Count": 1 },
                             { make: 'Porsche', range: '223 miles', "Total Count": 1 },
                         ]
                     }
@@ -256,7 +302,7 @@
                             { make: 'Volvo', range: '280 miles', "Total Count": 2 },
                             { make: 'Toyota', range: '255 miles', "Total Count": 1 },
                             //{ make: 'Kia', range: '264 miles', "Total Count": 2 },
-                            { make: 'Hyundai' range: '261 miles', "Total Count": 1 },
+                            { make: 'Hyundai', range: '261 miles', "Total Count": 1 },
                             //{ make: 'Porsche', range: '223 miles', "Total Count": 1 },
                         ]
                     },
@@ -270,7 +316,7 @@
                             { make: 'Volvo', range: '280 miles', "Total Count": 11 },
                             { make: 'Toyota', range: '255 miles', "Total Count": 3 },
                             { make: 'Kia', range: '264 miles', "Total Count": 3 },
-                            { make: 'Hyundai' range: '261 miles', "Total Count": 7 },
+                            { make: 'Hyundai', range: '261 miles', "Total Count": 7 },
                             { make: 'Porsche', range: '223 miles', "Total Count": 7 },
                         ]
                     },
@@ -303,7 +349,7 @@
                             { make: 'Volvo', range: '280 miles', "Total Count": 9 },
                             { make: 'Toyota', range: '255 miles', "Total Count": 1 },
                             { make: 'Kia', range: '264 miles', "Total Count": 8 },
-                            { make: 'Hyundai' range: '261 miles', "Total Count": 7 },
+                            { make: 'Hyundai', range: '261 miles', "Total Count": 7 },
                             { make: 'Porsche', range: '223 miles', "Total Count": 3 },
                         ]
                     },
@@ -317,7 +363,7 @@
                             { make: 'Volvo', range: '280 miles', "Total Count": 73 },
                             { make: 'Toyota', range: '255 miles', "Total Count": 7 },
                             { make: 'Kia', range: '264 miles', "Total Count": 31 },
-                            { make: 'Hyundai' range: '261 miles', "Total Count": 39 },
+                            { make: 'Hyundai', range: '261 miles', "Total Count": 39 },
                             { make: 'Porsche', range: '223 miles', "Total Count": 18 },
                         ]
                     },
@@ -331,7 +377,7 @@
                             { make: 'Volvo', range: '280 miles', "Total Count": 8 },
                             //{ make: 'Toyota', range: '255 miles', "Total Count": 1 },
                             { make: 'Kia', range: '264 miles', "Total Count": 2 },
-                            { make: 'Hyundai' range: '261 miles', "Total Count": 6 },
+                            { make: 'Hyundai', range: '261 miles', "Total Count": 6 },
                             //{ make: 'Porsche', range: '223 miles', "Total Count": 1 },
                         ]
                     },
@@ -345,7 +391,7 @@
                             { make: 'Volvo', range: '280 miles', "Total Count": 11 },
                             { make: 'Toyota', range: '255 miles', "Total Count": 5 },
                             { make: 'Kia', range: '264 miles', "Total Count": 11 },
-                            { make: 'Hyundai' range: '261 miles', "Total Count": 8 },
+                            { make: 'Hyundai', range: '261 miles', "Total Count": 8 },
                             { make: 'Porsche', range: '223 miles', "Total Count": 5 },
                         ]
                     },
@@ -359,7 +405,7 @@
                             { make: 'Volvo', range: '280 miles', "Total Count": 3 },
                             { make: 'Toyota', range: '255 miles', "Total Count": 2 },
                             //{ make: 'Kia', range: '264 miles', "Total Count": 3 },
-                            { make: 'Hyundai' range: '261 miles', "Total Count": 3 },
+                            { make: 'Hyundai', range: '261 miles', "Total Count": 3 },
                             { make: 'Porsche', range: '223 miles', "Total Count": 1 },
                         ]
                     }
@@ -378,7 +424,7 @@
                             { make: 'Volvo', range: '280 miles', "Total Count": 625 },
                             { make: 'Toyota', range: '255 miles', "Total Count": 171 },
                             { make: 'Kia', range: '264 miles', "Total Count": 319 },
-                            { make: 'Hyundai' range: '261 miles', "Total Count": 276 },
+                            { make: 'Hyundai', range: '261 miles', "Total Count": 276 },
                             { make: 'Porsche', range: '223 miles', "Total Count": 267 },
                         ]
                     },
@@ -392,7 +438,7 @@
                             { make: 'Volvo', range: '280 miles', "Total Count": 60 },
                             { make: 'Toyota', range: '255 miles', "Total Count": 10 },
                             { make: 'Kia', range: '264 miles', "Total Count": 29 },
-                            { make: 'Hyundai' range: '261 miles', "Total Count": 22 },
+                            { make: 'Hyundai', range: '261 miles', "Total Count": 22 },
                             { make: 'Porsche', range: '223 miles', "Total Count": 15 },
                         ]
                     },
@@ -406,7 +452,7 @@
                             { make: 'Volvo', range: '280 miles', "Total Count": 28 },
                             { make: 'Toyota', range: '255 miles', "Total Count": 10 },
                             { make: 'Kia', range: '264 miles', "Total Count": 28 },
-                            { make: 'Hyundai' range: '261 miles', "Total Count": 30 },
+                            { make: 'Hyundai', range: '261 miles', "Total Count": 30 },
                             { make: 'Porsche', range: '223 miles', "Total Count": 5 },
                         ]
                     },
@@ -420,7 +466,7 @@
                             { make: 'Volvo', range: '280 miles', "Total Count": 43 },
                             { make: 'Toyota', range: '255 miles', "Total Count": 5 },
                             { make: 'Kia', range: '264 miles', "Total Count": 23 },
-                            { make: 'Hyundai' range: '261 miles', "Total Count": 23 },
+                            { make: 'Hyundai', range: '261 miles', "Total Count": 23 },
                             { make: 'Porsche', range: '223 miles', "Total Count": 18 },
                         ]
                     },
@@ -434,7 +480,7 @@
                             { make: 'Volvo', range: '280 miles', "Total Count": 3 },
                             //{ make: 'Toyota', range: '255 miles', "Total Count": 1 },
                             //{ make: 'Kia', range: '264 miles', "Total Count": 8 },
-                            { make: 'Hyundai' range: '261 miles', "Total Count": 1 },
+                            { make: 'Hyundai', range: '261 miles', "Total Count": 1 },
                             { make: 'Porsche', range: '223 miles', "Total Count": 1 },
                         ]
                     }
@@ -453,7 +499,7 @@
                             { make: 'Volvo', range: '280 miles', "Total Count": 58 },
                             { make: 'Toyota', range: '255 miles', "Total Count": 50 },
                             { make: 'Kia', range: '264 miles', "Total Count": 54 },
-                            { make: 'Hyundai' range: '261 miles', "Total Count": 79 },
+                            { make: 'Hyundai', range: '261 miles', "Total Count": 79 },
                             { make: 'Porsche', range: '223 miles', "Total Count": 27 },
                         ]
                     },
@@ -467,7 +513,7 @@
                             { make: 'Volvo', range: '280 miles', "Total Count": 2 },
                             { make: 'Toyota', range: '255 miles', "Total Count": 5 },
                             { make: 'Kia', range: '264 miles', "Total Count": 3 },
-                            { make: 'Hyundai' range: '261 miles', "Total Count": 11 },
+                            { make: 'Hyundai', range: '261 miles', "Total Count": 11 },
                             //{ make: 'Porsche', range: '223 miles', "Total Count": 15 },
                         ]
                     },
@@ -528,7 +574,7 @@
                             { make: 'Volvo', range: '280 miles', "Total Count": 3 },
                             { make: 'Toyota', range: '255 miles', "Total Count": 7 },
                             { make: 'Kia', range: '264 miles', "Total Count": 3 },
-                            { make: 'Hyundai' range: '261 miles', "Total Count": 2 },
+                            { make: 'Hyundai', range: '261 miles', "Total Count": 2 },
                             { make: 'Porsche', range: '223 miles', "Total Count": 2 },
                         ]
                     },
@@ -542,7 +588,7 @@
                             { make: 'Volvo', range: '280 miles', "Total Count": 1 },
                             //{ make: 'Toyota', range: '255 miles', "Total Count": 5 },
                             { make: 'Kia', range: '264 miles', "Total Count": 1 },
-                            { make: 'Hyundai' range: '261 miles', "Total Count": 1 },
+                            { make: 'Hyundai', range: '261 miles', "Total Count": 1 },
                             //{ make: 'Porsche', range: '223 miles', "Total Count": 15 },
                         ]
                     },
@@ -570,7 +616,7 @@
                             { make: 'Volvo', range: '280 miles', "Total Count": 2 },
                             { make: 'Toyota', range: '255 miles', "Total Count": 5 },
                             { make: 'Kia', range: '264 miles', "Total Count": 3 },
-                            { make: 'Hyundai' range: '261 miles', "Total Count": 11 },
+                            { make: 'Hyundai', range: '261 miles', "Total Count": 11 },
                             //{ make: 'Porsche', range: '223 miles', "Total Count": 15 },
                         ]
                     },
@@ -598,14 +644,14 @@
                             //{ make: 'Volvo', range: '280 miles', "Total Count": 2 },
                             //{ make: 'Toyota', range: '255 miles', "Total Count": 5 },
                             //{ make: 'Kia', range: '264 miles', "Total Count": 3 },
-                            { make: 'Hyundai' range: '261 miles', "Total Count": 2 },
+                            { make: 'Hyundai', range: '261 miles', "Total Count": 2 },
                             //{ make: 'Porsche', range: '223 miles', "Total Count": 15 },
                         ]
                     }
                 ]
             }
         ];
-
+        /*
         // collect value from main page if clicked
         document.addEventListener("DOMContentLoaded", function () {
             // Parse the query parameter from the URL
@@ -619,6 +665,15 @@
                 // Fetch details for the selected region automatically
                 fetchRegionDetails(selectedRegion);
             }
+        });
+        */
+
+        document.addEventListener('DOMContentLoaded', function () {
+            // Add an event listener to the form submit event
+            document.getElementById("evForm").addEventListener("submit", function (event) {
+                event.preventDefault(); // Prevent the default form submission
+                submitForm(); // Call your submitForm function
+            });
         });
 
         function populateTable(region) {
@@ -652,6 +707,131 @@
             const regionName = regionInput.value;
             populateTable(regionName);
         }
+
+        // Function to handle form submission
+        function submitForm() {
+            // Get form elements
+            var form = document.getElementById("evForm");
+            var vinInput = document.getElementById("VIN");
+            var countyInput = document.getElementById("county");
+            var makeInput = document.getElementById("make");
+            var electricRangeInput = document.getElementById("electricRange");
+
+            // Get selected radio button value
+            var action = document.querySelector('input[name="drone"]:checked').value;
+
+            // Validate form inputs (add your own validation logic as needed)
+            if (vinInput.value === "" || countyInput.value === "" || makeInput.value === "" || electricRangeInput.value === "") {
+                alert("Please fill in all the fields.");
+                return;
+            }
+
+            // Find the existing data for the selected county and make
+            var existingData = electricVehiclesData.find(function (region) {
+                return region.region === 'SelectedRegion'; // Update with the selected region
+            });
+
+            if (action === "add") {
+                // Check if the county already exists
+                var existingCounty = existingData.counties.find(function (county) {
+                    return county.name === countyInput.value;
+                });
+
+                if (existingCounty) {
+                    // County exists, increment the "Total Count"
+                    existingCounty.vehicles.forEach(function (vehicle) {
+                        if (vehicle.make === makeInput.value) {
+                            vehicle["Total Count"] += 1;
+                        }
+                    });
+                } else {
+                    // County doesn't exist, add a new county with the data
+                    existingData.counties.push({
+                        name: countyInput.value,
+                        vehicles: [
+                            {
+                                make: makeInput.value,
+                                range: electricRangeInput.value,
+                                "Total Count": 1
+                            }
+                        ]
+                    });
+                }
+
+                // Display success message
+                alert("Data added successfully!");
+            } else if (action === "remove") {
+                // Perform the logic to remove data from your electricVehiclesData array
+                // Display success message
+                alert("Data removed successfully!");
+            } else if (action === "update") {
+                // Perform the logic to update data in your electricVehiclesData array
+                updateData(existingData, countyInput.value, makeInput.value, electricRangeInput.value);
+
+                // Display success message
+                alert("Data updated successfully!");
+            }
+
+            // Clear form inputs after submission (optional)
+            form.reset();
+        }
+
+        // Function to update data in the electricVehiclesData array
+        function updateData(existingData, countyName, make, newRange) {
+            // Check if the county exists
+            var existingCounty = existingData.counties.find(function (county) {
+                return county.name === countyName;
+            });
+
+            if (existingCounty) {
+                // Check if the make exists in the county
+                var existingMake = existingCounty.vehicles.find(function (vehicle) {
+                    return vehicle.make === make;
+                });
+
+                if (existingMake) {
+                    // Update the range with the average of the current and new values
+                    existingMake.range = calculateAverage(existingMake.range, newRange);
+                    // Increment the "Total Count"
+                    existingMake["Total Count"] += 1;
+                } else {
+                    // Make doesn't exist, add a new vehicle with the data
+                    existingCounty.vehicles.push({
+                        make: make,
+                        range: newRange,
+                        "Total Count": 1
+                    });
+                }
+            } else {
+                // County doesn't exist, add a new county with the data
+                existingData.counties.push({
+                    name: countyName,
+                    vehicles: [
+                        {
+                            make: make,
+                            range: newRange,
+                            "Total Count": 1
+                        }
+                    ]
+                });
+            }
+        }
+
+        // Function to calculate the average of two values
+        function calculateAverage(currentValue, newValue) {
+            var currentNumericValue = parseFloat(currentValue);
+            var newNumericValue = parseFloat(newValue);
+
+            if (!isNaN(currentNumericValue) && !isNaN(newNumericValue)) {
+                return ((currentNumericValue + newNumericValue) / 2).toFixed(2);
+            } else {
+                // Handle the case where the values are not valid numbers
+                return newValue; // Default to the new value if there's an issue
+            }
+        }
+
+   
+
     </script>
 </body>
 </html>
